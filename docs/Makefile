@@ -228,3 +228,8 @@ dummy:
 	$(SPHINXBUILD) -b dummy $(ALLSPHINXOPTS) $(BUILDDIR)/dummy
 	@echo
 	@echo "Build finished. Dummy builder generates no files."
+
+.PHONY: panel-calculator
+panel-calculator:
+	@echo "Serving panel calculator on http://127.0.0.1:8000/panel_calculator/"
+	python3 -m http.server 8000 --directory .
