@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Material Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Panel Material Calculator</h1>
+        <p>
+          Estimate the number of panels and supporting studs (reglar) required for a
+          wall installation. Measurements are in millimetres.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="calculator-form">
+          <div class="field-group">
+            <label for="width">Width (mm)</label>
+            <input id="width" name="width" type="number" min="0" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="height">Height (mm)</label>
+            <input id="height" name="height" type="number" min="0" step="1" required />
+          </div>
+
+          <fieldset class="field-group">
+            <legend>Orientation</legend>
+            <label class="radio">
+              <input type="radio" name="orientation" value="horizontal" checked />
+              Horizontal
+            </label>
+            <label class="radio">
+              <input type="radio" name="orientation" value="vertical" />
+              Vertical
+            </label>
+          </fieldset>
+
+          <div class="field-group">
+            <label for="waste">Waste allowance (%)</label>
+            <input id="waste" name="waste" type="number" min="0" step="1" value="10" />
+            <span class="hint">The percentage of extra material to include.</span>
+          </div>
+
+          <div class="field-group">
+            <label for="regel-length">Standard stud length (mm)</label>
+            <input
+              id="regel-length"
+              name="regel-length"
+              type="number"
+              min="0"
+              step="1"
+              placeholder="Optional (e.g. 4200)"
+            />
+            <span class="hint">Leave blank to see only total stud metres.</span>
+          </div>
+
+          <button type="submit">Calculate</button>
+        </form>
+      </section>
+
+      <section class="card" aria-live="polite">
+        <h2>Results</h2>
+        <dl id="results" class="results-grid">
+          <div>
+            <dt>Panels needed</dt>
+            <dd data-field="panelCount">–</dd>
+          </div>
+          <div>
+            <dt>Studs (reglar)</dt>
+            <dd data-field="regelCount">–</dd>
+          </div>
+          <div>
+            <dt>Total stud metres</dt>
+            <dd data-field="regelMeters">–</dd>
+          </div>
+          <div>
+            <dt>Stud pieces</dt>
+            <dd data-field="regelPieces">–</dd>
+          </div>
+          <div>
+            <dt>Panel rows / columns</dt>
+            <dd data-field="rowsOrCols">–</dd>
+          </div>
+          <div>
+            <dt>Panels per run</dt>
+            <dd data-field="piecesPerRun">–</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Calculations use panel length <strong>2400&nbsp;mm</strong>, panel cover width
+        <strong>106&nbsp;mm</strong>, and stud spacing <strong>600&nbsp;mm</strong>.
+      </p>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
